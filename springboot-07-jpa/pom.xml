@@ -5,6 +5,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.7.RELEASE</version>
+		<!-- 1213 -->
 	</parent>
 	<groupId>com.itheima</groupId>
 	<artifactId>springboot-07-jpa</artifactId>
