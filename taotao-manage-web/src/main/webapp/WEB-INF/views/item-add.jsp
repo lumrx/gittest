@@ -8,7 +8,7 @@
 	        <tr>
 	            <td>商品类目:</td>
 	            <td>
-	            	<a href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
+	            	<a href="javascript:void(0)" class="easyui-linkbutton selectItemCatAdd">选择类目</a>
 	            	<span ></span>
 	            	<input type="hidden" name="cid" style="width: 280px;"></input>
 	            </td>
@@ -40,8 +40,8 @@
 	        <tr>
 	            <td>商品图片:</td>
 	            <td>
-	            	 <a href="javascript:void(0)" class="easyui-linkbutton picFileUpload">上传图片</a>
-	            	 <div class="pics"><ul></ul></div>
+	            	 <a href="javascript:void(0)" class="easyui-linkbutton picFileUploadAdd">上传图片</a>
+	            	 <div class="picsAdd"><ul></ul></div>
 	                 <input type="hidden" name="image"/>
 	            </td>
 	        </tr>
@@ -61,7 +61,7 @@
 	    <input type="hidden" name="itemParams"/>
 	</form>
 	<div style="padding:5px">
-	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
+	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitFormAdd()">提交</a>
 	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
 	</div>
 </div>
@@ -84,7 +84,7 @@
 	});
 	
 	//提交商品信息到后台
-	function submitForm(){
+	function submitFormAdd(){
 		//校验表单
 		if(!$('#itemAddForm').form('validate')){
 			$.messager.alert('提示','表单还未填写完成!');
@@ -96,10 +96,13 @@
 		//提交到后台的RESTful
 		$.ajax({
 		   type: "POST",
-		   url: "/rest/item",
+		   url: "/rest/item/save",
 		   data: $("#itemAddForm").serialize(),
 		   success: function(msg){
 			   $.messager.alert('提示','新增商品成功!');
+			   clearForm();
+			   $(".selectItemCatAdd").next().text("");
+			   $(".picsAdd li").remove();
 		   },
 		   error: function(){
 			   $.messager.alert('提示','新增商品失败!');
@@ -114,7 +117,7 @@
 	
 	//类目选择初始化
 	function initItemCat(){
-		var selectItemCat = $(".selectItemCat");
+		var selectItemCat = $(".selectItemCatAdd");
    		selectItemCat.click(function(){
    			$("<div>").css({padding:"5px"}).html("<ul>")
    			.window({
@@ -149,17 +152,17 @@
 	
 	//图片上传初始化
 	function initPicUpload(){
-       	$(".picFileUpload").click(function(){
+       	$(".picFileUploadAdd").click(function(){
        		var form = $('#itemAddForm');
        		KindEditor.editor(kingEditorParams).loadPlugin('multiimage',function(){
        			var editor = this;
        			editor.plugin.multiImageDialog({
 					clickFn : function(urlList) {
-						$(".pics li").remove();
+						$(".picsAdd li").remove();
 						var imgArray = [];
 						KindEditor.each(urlList, function(i, data) {
 							imgArray.push(data.url);
-							$(".pics ul").append("<li><a href='"+data.url+"' target='_blank'><img src='"+data.url+"' width='80' height='50' /></a></li>");
+							$(".picsAdd ul").append("<li><a href='"+data.url+"' target='_blank'><img src='"+data.url+"' width='80' height='50' /></a></li>");
 						});
 						form.find("[name=image]").val(imgArray.join(","));
 						editor.hideDialog();

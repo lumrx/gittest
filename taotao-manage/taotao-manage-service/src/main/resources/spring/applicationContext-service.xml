@@ -23,9 +23,21 @@
 	<!-- 用dubbo协议在20880端口暴露服务；端口号唯一即可 -->
 	<dubbo:protocol name="dubbo" port="20880" />
 
-	<bean id="testServiceImpl" class="com.taotao.manage.service.impl.TestServiceImpl"/>
 	<!-- 声明需要暴露的服务接口 -->
+	<bean id="testServiceImpl" class="com.taotao.manage.service.impl.TestServiceImpl"/>
 	<dubbo:service interface="com.taotao.manage.service.TestService" ref="testServiceImpl" />
+	
+	<!-- 声明需要暴露的服务接口 -->
+	<bean id="itemCatServiceImpl" class="com.taotao.manage.service.impl.ItemCatServiceImpl"/>
+	<dubbo:service interface="com.taotao.manage.service.ItemCatService" ref="itemCatServiceImpl" />
+	
+	<!-- 声明需要暴露的服务接口 :商品基本信息 -->
+	<bean id="itemServiceImpl" class="com.taotao.manage.service.impl.ItemServiceImpl"/>
+	<dubbo:service interface="com.taotao.manage.service.ItemService" ref="itemServiceImpl" />
+	
+	<!-- 声明需要暴露的服务接口:商品描述信息 -->
+	<bean id="itemDescServiceImpl" class="com.taotao.manage.service.impl.ItemDescServiceImpl"/>
+	<dubbo:service interface="com.taotao.manage.service.ItemDescService" ref="itemDescServiceImpl" />
 
 </beans>
 

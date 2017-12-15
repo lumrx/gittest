@@ -24,14 +24,33 @@
 	<!-- 配置dubbo服务 -->
 	<dubbo:application name="taotao-manage-web" />
 
+	<!-- 处理上传文件 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 上传文件的最大大小 -->
+		<property name="maxUploadSize" value="5000000"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
+
 	<!-- 使用广播； -->
 	<!-- <dubbo:registry address="multicast://224.5.6.7:1234" /> -->
 	<!-- 使用zookeeper -->
 	<dubbo:registry protocol="zookeeper" address="192.168.12.168:2181" />
 
 	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 -->
-	<dubbo:reference interface="com.taotao.manage.service.TestService" 
-		id="testService" timeout="1000000"/>
+	<dubbo:reference interface="com.taotao.manage.service.TestService"
+		id="testService" timeout="1000000" />
+
+	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 -->
+	<dubbo:reference interface="com.taotao.manage.service.ItemCatService"
+		id="itemCatService" timeout="1000000" />
+
+	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 -->
+	<dubbo:reference interface="com.taotao.manage.service.ItemService"
+		id="itemService" timeout="1000000" />
+	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 -->
+	<dubbo:reference interface="com.taotao.manage.service.ItemDescService"
+		id="itemDescService" timeout="1000000" />
 
 </beans>
 

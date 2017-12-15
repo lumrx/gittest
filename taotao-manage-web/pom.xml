@@ -29,7 +29,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
 		</dependency>
 
 		<!-- JSP相关 -->
@@ -81,14 +80,24 @@
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
 		</dependency>
-
-
 		<dependency>
 			<groupId>com.taotao</groupId>
 			<artifactId>taotao-manage-interface</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
+		<!-- 文件上传组件 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+		<!-- fastdfs依赖 -->
+		<dependency>
+			<groupId>fastdfs_client</groupId>
+			<artifactId>fastdfs_client</artifactId>
+			<version>1.25</version>
+		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>
