@@ -60,12 +60,6 @@
 		<property name="typeAliasesPackage" value="com.taotao.manage.pojo"></property>
 	</bean>
 
-	<!-- 配置Mapper扫描 -->
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		Mapper扫描包
-		<property name="basePackage" value="com.taotao.manage.mapper" />
-	</bean> -->
-
 	<!-- 通用mapper -->
 	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.taotao.manage.mapper" />

@@ -24,28 +24,21 @@
 	<dubbo:protocol name="dubbo" port="20880" />
 
 	<!-- 声明需要暴露的服务接口 -->
-	<bean id="testServiceImpl" class="com.taotao.manage.service.impl.TestServiceImpl"/>
 	<dubbo:service interface="com.taotao.manage.service.TestService" ref="testServiceImpl" />
 	
 	<!-- 声明需要暴露的服务接口 -->
-	<bean id="itemCatServiceImpl" class="com.taotao.manage.service.impl.ItemCatServiceImpl"/>
 	<dubbo:service interface="com.taotao.manage.service.ItemCatService" ref="itemCatServiceImpl" />
 	
 	<!-- 声明需要暴露的服务接口 :商品基本信息 -->
-	<bean id="itemServiceImpl" class="com.taotao.manage.service.impl.ItemServiceImpl"/>
 	<dubbo:service interface="com.taotao.manage.service.ItemService" ref="itemServiceImpl" />
 	
 	<!-- 声明需要暴露的服务接口:商品描述信息 -->
-	<bean id="itemDescServiceImpl" class="com.taotao.manage.service.impl.ItemDescServiceImpl"/>
 	<dubbo:service interface="com.taotao.manage.service.ItemDescService" ref="itemDescServiceImpl" />
 	
-	
 	<!-- 声明需要暴露的服务接口 :内容分类 -->
-	<bean id="contentCategoryServiceImpl" class="com.taotao.manage.service.impl.ContentCategoryServiceImpl"/>
 	<dubbo:service interface="com.taotao.manage.service.ContentCategoryService" ref="contentCategoryServiceImpl" />
 	
 	<!-- 声明需要暴露的服务接口:内容 -->
-	<bean id="contentServiceImpl" class="com.taotao.manage.service.impl.ContentServiceImpl"/>
 	<dubbo:service interface="com.taotao.manage.service.ContentService" ref="contentServiceImpl" />
 
 </beans>
