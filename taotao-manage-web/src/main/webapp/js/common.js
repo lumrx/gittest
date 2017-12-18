@@ -38,6 +38,19 @@ var TT = TAOTAO = {
 		}
 		return "";
 	},
+	// 格式化类别
+	formatCat : function(val,row){
+		var cat;
+		$.ajax({
+			url:'/rest/item/cat/'+val,
+			async:false,
+			type: "get",
+			success:function(data){
+				cat = data.name;
+			}
+		});
+		return cat;
+	},
 	// 格式化价格
 	formatPrice : function(val,row){
 		return (val/100).toFixed(2);

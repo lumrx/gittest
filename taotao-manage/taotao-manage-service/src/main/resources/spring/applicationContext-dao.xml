@@ -18,6 +18,8 @@
 		<!-- 配置资源文件 -->
 		<property name="locations">
 			<list>
+				<value>classpath:redis.properties</value>
+				<value>classpath:ad.properties</value>
 				<value>classpath:jdbc.properties</value>
 			</list>
 		</property>

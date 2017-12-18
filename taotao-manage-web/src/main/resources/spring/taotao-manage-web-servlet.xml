@@ -45,12 +45,25 @@
 	<dubbo:reference interface="com.taotao.manage.service.ItemCatService"
 		id="itemCatService" timeout="1000000" />
 
-	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 -->
+	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 
+		 商品基本信息-->
 	<dubbo:reference interface="com.taotao.manage.service.ItemService"
 		id="itemService" timeout="1000000" />
-	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 -->
+		
+	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 
+		 商品描述信息-->
 	<dubbo:reference interface="com.taotao.manage.service.ItemDescService"
 		id="itemDescService" timeout="1000000" />
+		
+	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 
+		内容分类-->
+	<dubbo:reference interface="com.taotao.manage.service.ContentCategoryService"
+		id="contentCategoryService" timeout="1000000" />
+		
+	<!-- 声明要调用的服务，timeout是设置连接超时最长时间,如果不设置，超时时间默认是3秒 
+		 内容-->
+	<dubbo:reference interface="com.taotao.manage.service.ContentService"
+		id="contentService" timeout="1000000" />
 
 </beans>
 

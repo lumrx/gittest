@@ -2,6 +2,7 @@ package com.taotao.manage.service.impl;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -81,7 +82,14 @@ public class ItemServiceImpl extends BaseServiceImpl<Item> implements ItemServic
 		//分页
 		PageHelper.startPage(page, rows);
 		List<Item> items = itemMapper.selectByExample(example);
-		PageInfo<Item> pageInfo = new PageInfo<>(items);
+		//过滤已删除的商品
+		List<Item> list = new ArrayList<>();
+		for (Item item : items) {
+			if (!item.getStatus().equals(3)) {
+				list.add(item);
+			}
+		}
+		PageInfo<Item> pageInfo = new PageInfo<>(list);
 		return new PageResult(pageInfo.getTotal(),pageInfo.getList());
 	}
 
@@ -106,8 +114,9 @@ public class ItemServiceImpl extends BaseServiceImpl<Item> implements ItemServic
 	@Override
 	public void deleteItemByIds(String[] ids) {
 		for (String id : ids) {
-			itemMapper.deleteByPrimaryKey(Long.parseLong(id));
-			itemDescMapper.deleteByPrimaryKey(Long.parseLong(id));
+			Item item = itemMapper.selectByPrimaryKey(Long.parseLong(id));
+			item.setStatus(3);
+			itemMapper.updateByPrimaryKeySelective(item);
 		}
 	}
 }
