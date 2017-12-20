@@ -8,23 +8,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.taotao.manage.service.ContentService;
 
-
 @Controller
 public class IndexController {
-	
+
 	@Autowired
 	private ContentService contentService;
-	
-	@RequestMapping(value="/index",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
 		try {
-			
+
 			modelAndView.addObject("bigAdData", contentService.queryBigAdData());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return modelAndView;
 	}
+
 }
